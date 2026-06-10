@@ -453,12 +453,14 @@ body::before {
   display: inline-block;
   background: linear-gradient(180deg, #ffffff 0%, #d4d4d8 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .hero-title span.gold-highlight {
   background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-base) 50%, var(--gold-dark) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   position: relative;
 }
