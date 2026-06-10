@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="MORO AI Consultancy. Custom AI tools tailored to your need. Leveling the playing field for businesses.">
+  <title>MORO | AI Consultancy</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Sleek modal style for About Us */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition-smooth);
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: var(--bg-secondary);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 16px;
+      padding: 3rem;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 40px rgba(212, 175, 55, 0.05);
+      position: relative;
+      transform: scale(0.9);
+      transition: var(--transition-smooth);
+      color: var(--text-primary);
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 24px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: var(--gold-base);
+    }
+
+    .modal-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-base));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .modal-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo-container">
+      <a href="main_page.html" class="logo-link" id="header-logo-link">
+        <img src="images/moro_logo.png" alt="MORO Logo" class="logo-img">
+      </a>
+    </div>
+
+    <!-- Center Dropdown Boxes -->
+    <nav class="header-nav" aria-label="Main Navigation">
+      <!-- Dropdown 1 -->
+      <div class="nav-item-dropdown" tabindex="0" aria-haspopup="true">
+        <span class="dropdown-trigger">Services</span>
+        <div class="dropdown-menu">
+          <p class="dropdown-title">Consulting Services</p>
+          <ul class="dropdown-links">
+            <li class="dropdown-link-item"><a href="#">AI Strategy Development</a></li>
+            <li class="dropdown-link-item"><a href="#">Model Fine-Tuning</a></li>
+            <li class="dropdown-link-item"><a href="#">Workflow Automation</a></li>
+            <li class="dropdown-link-item"><a href="#">AI Product Audits</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Dropdown 2 -->
+      <div class="nav-item-dropdown" tabindex="0" aria-haspopup="true">
+        <span class="dropdown-trigger">Solutions</span>
+        <div class="dropdown-menu">
+          <p class="dropdown-title">Industry Solutions</p>
+          <ul class="dropdown-links">
+            <li class="dropdown-link-item"><a href="#">Finance & Risk AI</a></li>
+            <li class="dropdown-link-item"><a href="#">E-Commerce Personalization</a></li>
+            <li class="dropdown-link-item"><a href="#">AI Agents for Support</a></li>
+            <li class="dropdown-link-item"><a href="#">Healthcare Analytics</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Dropdown 3 -->
+      <div class="nav-item-dropdown" tabindex="0" aria-haspopup="true">
+        <span class="dropdown-trigger">Company</span>
+        <div class="dropdown-menu">
+          <p class="dropdown-title">About MORO</p>
+          <ul class="dropdown-links">
+            <li class="dropdown-link-item"><a href="#" id="company-about-link">Our Mission</a></li>
+            <li class="dropdown-link-item"><a href="#">Research Lab</a></li>
+            <li class="dropdown-link-item"><a href="#">Case Studies</a></li>
+            <li class="dropdown-link-item"><a href="#">Join Our Team</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Right Actions -->
+    <div class="header-actions">
+      <!-- Contact Button -->
+      <a href="contact_us.html" class="contact-btn" id="header-contact-btn">Contact Us</a>
+
+      <!-- Hamburger Menu Icon -->
+      <button class="menu-toggle" id="menu-toggle-btn" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hamburger Menu Slide Drawer -->
+  <div class="menu-overlay" id="menu-overlay"></div>
+  <aside class="menu-drawer" id="menu-drawer">
+    <ul class="drawer-links">
+      <li class="drawer-link-item"><a href="main_page.html">Home</a></li>
+      <li class="drawer-link-item"><a href="#" id="drawer-about-link">About Us</a></li>
+      <li class="drawer-link-item"><a href="contact_us.html">Contact Us</a></li>
+    </ul>
+
+    <div class="drawer-footer">
+      <p>MORO AI Consultancy</p>
+      <p style="color: var(--text-muted); font-size: 11px;">Leveling the playing field through modern technology.</p>
+    </div>
+  </aside>
+
+  <!-- Main Hero Section -->
+  <main class="hero-section">
+    <article class="hero-content">
+      <div class="hero-title-group">
+        <h1 class="hero-title">
+          <span>AI TOOL</span>
+          <span class="gold-highlight">TAILORED TO</span>
+          <span>YOUR NEED</span>
+        </h1>
+      </div>
+      <p class="hero-subtext">
+        <span>we want to level the playing field</span>
+        <span class="white-text">AI Tools are no longer for tech giants</span>
+        <span>they're for you</span>
+      </p>
+    </article>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-left">
+      <a href="contact_us.html" class="footer-link">Contact Us</a>
+    </div>
+    <div class="footer-center">
+      <span class="footer-credits">website made by <a href="https://github.com/Skrofo" target="_blank"
+          rel="noopener noreferrer">Lucas Theodorou</a></span>
+    </div>
+    <div class="footer-right">
+      <a href="faq.html" class="footer-link">FAQ</a>
+    </div>
+  </footer>
+
+  <!-- About Us Modal (Wow Factor Overlay) -->
+  <div class="modal-overlay" id="about-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close-btn">&times;</button>
+      <h2 class="modal-title">About MORO</h2>
+      <p class="modal-text">We are a high-end AI consultancy dedicated to democratizing artificial intelligence. Our
+        mission is to level the playing field, making world-class tools accessible to businesses of all sizes.</p>
+      <p class="modal-text">At MORO, we don't believe in one-size-fits-all solutions. We build tailored,
+        production-ready AI systems that drive measurable growth and seamless efficiency for your specific team needs.
+      </p>
+      <a href="contact_us.html" class="contact-btn" style="display: block; text-align: center;">Partner With Us</a>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Elements
+    const menuToggle = document.getElementById('menu-toggle-btn');
+    const menuDrawer = document.getElementById('menu-drawer');
+    const menuOverlay = document.getElementById('menu-overlay');
+    const aboutModal = document.getElementById('about-modal');
+    const modalClose = document.getElementById('modal-close-btn');
+
+    // Links to toggle About modal
+    const companyAboutLink = document.getElementById('company-about-link');
+    const drawerAboutLink = document.getElementById('drawer-about-link');
+
+    // Menu Drawer Toggling
+    function toggleDrawer() {
+      menuToggle.classList.toggle('open');
+      menuDrawer.classList.toggle('active');
+      menuOverlay.classList.toggle('active');
+    }
+
+    menuToggle.addEventListener('click', toggleDrawer);
+    menuOverlay.addEventListener('click', toggleDrawer);
+
+    // Escape key closes menus & modals
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (menuDrawer.classList.contains('active')) {
+          toggleDrawer();
+        }
+        if (aboutModal.classList.contains('active')) {
+          closeAboutModal();
+        }
+      }
+    });
+
+    // About Modal functions
+    function openAboutModal(e) {
+      if (e) e.preventDefault();
+      // Close drawer if open
+      if (menuDrawer.classList.contains('active')) {
+        toggleDrawer();
+      }
+      aboutModal.classList.add('active');
+    }
+
+    function closeAboutModal() {
+      aboutModal.classList.remove('active');
+    }
+
+    companyAboutLink.addEventListener('click', openAboutModal);
+    drawerAboutLink.addEventListener('click', openAboutModal);
+    modalClose.addEventListener('click', closeAboutModal);
+    aboutModal.addEventListener('click', (e) => {
+      if (e.target === aboutModal) closeAboutModal();
+    });
+
+    // Ambient mouse tracking light
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+
+      document.documentElement.style.setProperty('--mouse-x', `${x}%`);
+      document.documentElement.style.setProperty('--mouse-y', `${y}%`);
+    });
+  </script>
+</body>
+
+</html>
