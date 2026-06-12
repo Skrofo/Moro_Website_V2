@@ -42,8 +42,6 @@
       letter-spacing: 3px;
       color: var(--gold-base);
       font-weight: 700;
-      opacity: 0;
-      animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
     }
 
     .ai-section-heading {
@@ -51,8 +49,6 @@
       font-weight: 900;
       letter-spacing: -1.5px;
       line-height: 1.05;
-      opacity: 0;
-      animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
     }
 
     .ai-section-heading span {
@@ -67,8 +63,19 @@
       grid-template-columns: 1.1fr 1fr;
       gap: 4rem;
       width: 100%;
+    }
+
+    /* Scroll-triggered reveal — one-shot, never repeats */
+    .scroll-reveal {
       opacity: 0;
-      animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+      transform: translateY(30px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .ai-body-text p {
@@ -103,10 +110,14 @@
       display: flex;
       align-items: flex-start;
       gap: 1.25rem;
-      transition: var(--transition-smooth);
+      /* Merge hover + reveal transitions */
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .ai-card:hover {
+    .ai-card.revealed:hover {
       border-color: rgba(212, 175, 55, 0.3);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 175, 55, 0.04);
       transform: translateX(6px);
@@ -363,14 +374,14 @@
 
   <!-- What Actually Is AI Section -->
   <section class="ai-section" aria-labelledby="ai-section-heading">
-    <p class="ai-section-label">Understanding the Technology</p>
-    <h2 class="ai-section-heading" id="ai-section-heading">
+    <p class="ai-section-label scroll-reveal">Understanding the Technology</p>
+    <h2 class="ai-section-heading scroll-reveal" id="ai-section-heading" data-delay="100">
       What actually<br>is <span>AI?</span>
     </h2>
 
     <div class="ai-body-grid">
       <!-- Left: explanatory copy -->
-      <div class="ai-body-text">
+      <div class="ai-body-text scroll-reveal" data-delay="200">
         <p>
           <strong>AI (or Artificial Intelligence)</strong> uses large amounts of data to learn how to do things —
           much like how a person learns from experience, but at a scale and speed no human could match.
@@ -392,7 +403,7 @@
 
       <!-- Right: use-case cards -->
       <div class="ai-cards">
-        <div class="ai-card" id="ai-card-automation">
+        <div class="ai-card scroll-reveal" id="ai-card-automation" data-delay="150">
           <div class="ai-card-icon">⚙️</div>
           <div class="ai-card-content">
             <h3>Automation</h3>
@@ -401,7 +412,7 @@
           </div>
         </div>
 
-        <div class="ai-card" id="ai-card-insight">
+        <div class="ai-card scroll-reveal" id="ai-card-insight" data-delay="250">
           <div class="ai-card-icon">📊</div>
           <div class="ai-card-content">
             <h3>Smarter Decisions</h3>
@@ -410,7 +421,7 @@
           </div>
         </div>
 
-        <div class="ai-card" id="ai-card-personalisation">
+        <div class="ai-card scroll-reveal" id="ai-card-personalisation" data-delay="350">
           <div class="ai-card-icon">🎯</div>
           <div class="ai-card-content">
             <h3>Personalisation at Scale</h3>
@@ -419,7 +430,7 @@
           </div>
         </div>
 
-        <div class="ai-card" id="ai-card-language">
+        <div class="ai-card scroll-reveal" id="ai-card-language" data-delay="450">
           <div class="ai-card-icon">💬</div>
           <div class="ai-card-content">
             <h3>Natural Language</h3>
@@ -461,6 +472,10 @@
 
   <!-- Scripts -->
   <script>
+    // Always start at the top on load/reload
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+
     // Elements
     const menuToggle = document.getElementById('menu-toggle-btn');
     const menuDrawer = document.getElementById('menu-drawer');
@@ -522,6 +537,26 @@
 
       document.documentElement.style.setProperty('--mouse-x', `${x}%`);
       document.documentElement.style.setProperty('--mouse-y', `${y}%`);
+    });
+
+    // Scroll-reveal: elements fade in once when entering the viewport.
+    // Once revealed they are unobserved — no re-animation on scroll up/down.
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const delay = parseInt(el.dataset.delay || 0, 10);
+          setTimeout(() => el.classList.add('revealed'), delay);
+          revealObserver.unobserve(el); // never triggers again
+        }
+      });
+    }, {
+      threshold: 0.12,       // trigger when 12% of element is visible
+      rootMargin: '0px 0px -40px 0px' // slight bottom offset for natural feel
+    });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      revealObserver.observe(el);
     });
   </script>
 </body>
