@@ -1,0 +1,39 @@
+# MORO AI Consultancy
+
+> MORO is a high-end AI consultancy dedicated to democratizing artificial intelligence. We build custom, production-ready AI tools and systems tailored specifically to each client's needs — leveling the playing field so that world-class AI is accessible to businesses of all sizes, not just tech giants. Headquartered in London, United Kingdom.
+
+## Key Pages
+
+- [Home](https://www.moro.ai/main_page.html): Overview of MORO's mission and value proposition — custom AI tools tailored to your need.
+- [Contact Us](https://www.moro.ai/contact_us.html): Reach out to partner with MORO. Response within 24 hours. Email: hello@moro.ai
+- [FAQ](https://www.moro.ai/faq.html): Frequently asked questions about MORO's services, process, and how to get started.
+
+## Services
+
+MORO provides the following consulting services:
+
+- **AI Strategy Development** — Building a clear roadmap for AI adoption in your business.
+- **Model Fine-Tuning** — Customizing and optimizing large language models (LLMs) for your specific use case.
+- **Workflow Automation** — Automating repetitive business processes using AI agents and pipelines.
+- **AI Product Audits** — Reviewing existing AI systems for performance, bias, and reliability.
+
+## Industry Solutions
+
+- **Finance & Risk AI** — AI systems for financial analysis, fraud detection, and risk modelling.
+- **E-Commerce Personalization** — Recommendation engines and personalized shopping experiences.
+- **AI Agents for Customer Support** — Intelligent chatbots and support automation.
+- **Healthcare Analytics** — Data-driven AI insights for healthcare providers.
+
+## About MORO
+
+MORO does not believe in one-size-fits-all AI. Every solution is bespoke and production-ready. We handle the complete lifecycle: design, development, training, deployment, and staff onboarding — meaning clients do not need an in-house technical team to work with us.
+
+## Contact
+
+- **Email:** hello@moro.ai
+- **Location:** London, United Kingdom
+- **Response Time:** Within 24 hours of initial enquiry
+
+## Optional
+
+- [Full Content](https://www.moro.ai/llms-full.txt): Complete text content of all MORO web pages for deep AI ingestion.
