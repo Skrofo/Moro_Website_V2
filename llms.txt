@@ -3,7 +3,7 @@
 > MORO is a high-end AI consultancy dedicated to democratizing artificial intelligence. We build custom, production-ready AI tools and systems tailored specifically to each client's needs — leveling the playing field so that world-class AI is accessible to businesses of all sizes, not just tech giants. Headquartered in London, United Kingdom.
 
 ## Key Pages
-
+##CHANGE DOMAIN WHEN ITS BEEN PURCHASED
 - [Home](https://www.moro.ai/main_page.html): Overview of MORO's mission and value proposition — custom AI tools tailored to your need.
 - [Contact Us](https://www.moro.ai/contact_us.html): Reach out to partner with MORO. Response within 24 hours. Email: hello@moro.ai
 - [FAQ](https://www.moro.ai/faq.html): Frequently asked questions about MORO's services, process, and how to get started.
