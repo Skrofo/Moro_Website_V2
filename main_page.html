@@ -9,6 +9,175 @@
   <title>MORO | AI Consultancy</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    /* Allow scrolling on the homepage */
+    body {
+      height: auto;
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+
+    /* Hero fills the full viewport — AI section only visible on scroll */
+    .hero-section {
+      min-height: 100vh;
+      margin-top: 0;
+      padding-top: calc(var(--header-height) + 3rem);
+      margin-bottom: 0;
+      flex: none;
+    }
+
+    /* AI Info Section */
+    .ai-section {
+      position: relative;
+      z-index: 5;
+      padding: 6rem 8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3rem;
+    }
+
+    .ai-section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--gold-base);
+      font-weight: 700;
+      opacity: 0;
+      animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+    }
+
+    .ai-section-heading {
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.05;
+      opacity: 0;
+      animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    }
+
+    .ai-section-heading span {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-base));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .ai-body-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 4rem;
+      width: 100%;
+      opacity: 0;
+      animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+    }
+
+    .ai-body-text p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--text-secondary);
+      margin-bottom: 1.4rem;
+    }
+
+    .ai-body-text p strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .ai-body-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .ai-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .ai-card {
+      background: rgba(18, 18, 21, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      border-radius: 14px;
+      padding: 1.5rem 1.75rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      transition: var(--transition-smooth);
+    }
+
+    .ai-card:hover {
+      border-color: rgba(212, 175, 55, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 175, 55, 0.04);
+      transform: translateX(6px);
+    }
+
+    .ai-card-icon {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      border-radius: 10px;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-base);
+      font-size: 18px;
+    }
+
+    .ai-card-content h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.35rem;
+      letter-spacing: 0.2px;
+    }
+
+    .ai-card-content p {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .ai-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.15), transparent);
+      margin: 0 8rem;
+      width: calc(100% - 16rem);
+    }
+
+    @media (max-width: 1024px) {
+      .ai-section {
+        padding: 5rem 4rem;
+      }
+      .ai-body-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .ai-divider {
+        margin: 0 4rem;
+        width: calc(100% - 8rem);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .ai-section {
+        padding: 4rem 2rem;
+      }
+      .ai-divider {
+        margin: 0 2rem;
+        width: calc(100% - 4rem);
+      }
+    }
+
+    /* Override absolute footer for scrollable homepage */
+    .site-footer {
+      position: relative;
+      margin-top: auto;
+    }
+
     /* Sleek modal style for About Us */
     .modal-overlay {
       position: fixed;
@@ -176,18 +345,91 @@
     <article class="hero-content">
       <div class="hero-title-group">
         <h1 class="hero-title">
-          <span>AI TOOL</span>
-          <span class="gold-highlight">TAILORED TO</span>
-          <span>YOUR NEED</span>
+          <span>AI TOOLS</span>
+          <span>TAILORED TO</span>
+          <span class="gold-highlight">YOUR NEEDS</span>
         </h1>
       </div>
       <p class="hero-subtext">
         <span>we want to level the playing field</span>
-        <span class="white-text">AI Tools are no longer for tech giants</span>
-        <span>they're for you</span>
+        <span>AI tools are no longer just for tech giants</span>
+        <span class="white-text" style="color: var(--gold-light);">they're for you too</span>
       </p>
     </article>
   </main>
+
+  <!-- Divider -->
+  <div class="ai-divider"></div>
+
+  <!-- What Actually Is AI Section -->
+  <section class="ai-section" aria-labelledby="ai-section-heading">
+    <p class="ai-section-label">Understanding the Technology</p>
+    <h2 class="ai-section-heading" id="ai-section-heading">
+      What actually<br>is <span>AI?</span>
+    </h2>
+
+    <div class="ai-body-grid">
+      <!-- Left: explanatory copy -->
+      <div class="ai-body-text">
+        <p>
+          <strong>AI (or Artificial Intelligence)</strong> uses large amounts of data to learn how to do things —
+          much like how a person learns from experience, but at a scale and speed no human could match.
+          Feed it millions of customer emails and it learns to write responses. Show it thousands of
+          financial records and it learns to spot fraud. The more quality data it has, the smarter it becomes.
+        </p>
+        <p>
+          Under the hood, modern AI works by finding deep patterns in data that would be invisible to the
+          human eye. It builds a kind of internal "model" of the world — a set of rules it has worked out
+          for itself — and applies those rules to new situations it has never seen before.
+        </p>
+        <p>
+          The practical result is software that can <strong>understand natural language</strong>,
+          <strong>make accurate predictions</strong>, <strong>automate complex decisions</strong>,
+          and even <strong>generate entirely new content</strong> — all without being explicitly told
+          how to do any of it. That is what makes it genuinely different from traditional software.
+        </p>
+      </div>
+
+      <!-- Right: use-case cards -->
+      <div class="ai-cards">
+        <div class="ai-card" id="ai-card-automation">
+          <div class="ai-card-icon">⚙️</div>
+          <div class="ai-card-content">
+            <h3>Automation</h3>
+            <p>AI handles repetitive tasks around the clock — from processing invoices to answering
+              customer queries — freeing your team for work that actually requires human judgement.</p>
+          </div>
+        </div>
+
+        <div class="ai-card" id="ai-card-insight">
+          <div class="ai-card-icon">📊</div>
+          <div class="ai-card-content">
+            <h3>Smarter Decisions</h3>
+            <p>By analysing patterns across vast datasets, AI surfaces insights that would take
+              a human analyst weeks to find — in seconds.</p>
+          </div>
+        </div>
+
+        <div class="ai-card" id="ai-card-personalisation">
+          <div class="ai-card-icon">🎯</div>
+          <div class="ai-card-content">
+            <h3>Personalisation at Scale</h3>
+            <p>AI tailors experiences to individual customers — recommendations, pricing, messaging —
+              without any manual effort from your side.</p>
+          </div>
+        </div>
+
+        <div class="ai-card" id="ai-card-language">
+          <div class="ai-card-icon">💬</div>
+          <div class="ai-card-content">
+            <h3>Natural Language</h3>
+            <p>Modern AI reads, writes, and converses in plain English. It can draft emails,
+              summarise documents, or power intelligent chatbots for your customers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Site Footer -->
   <footer class="site-footer">
@@ -208,8 +450,8 @@
     <div class="modal-content">
       <button class="modal-close" id="modal-close-btn">&times;</button>
       <h2 class="modal-title">About MORO</h2>
-      <p class="modal-text">We are a high-end AI consultancy dedicated to democratizing artificial intelligence. Our
-        mission is to level the playing field, making world-class tools accessible to businesses of all sizes.</p>
+      <p class="modal-text">We are a high-end AI consultancy dedicated to democratising artificial intelligence. Our
+        mission is to level the playing field, making world-class AI tools accessible to businesses of all sizes.</p>
       <p class="modal-text">At MORO, we don't believe in one-size-fits-all solutions. We build tailored,
         production-ready AI systems that drive measurable growth and seamless efficiency for your specific team needs.
       </p>

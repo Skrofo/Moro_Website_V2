@@ -65,7 +65,7 @@ A: Simply navigate to our Contact Us page, fill out your project details, and ou
 **Description:** Whether you're looking to build custom AI tools, optimize your workflows, or develop a roadmap for tech implementation, we're here to help you scale.
 
 **Contact Details:**
-- Email: hello@moro.ai
+- Email: moro.ai@outlook.com
 - Head Office: London, United Kingdom
 
 **Form Fields:**
@@ -82,6 +82,6 @@ A: Simply navigate to our Contact Us page, fill out your project details, and ou
 - **Company Name:** MORO AI Consultancy
 - **Tagline:** Leveling the playing field through modern technology.
 - **Location:** London, United Kingdom
-- **Email:** hello@moro.ai
+- **Email:** moro.ai@outlook.com
 - **Primary Focus:** Custom AI tools and strategy for SMEs and businesses of all sizes.
 - **Website:** https://www.moro.ai
