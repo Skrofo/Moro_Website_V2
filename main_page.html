@@ -183,6 +183,79 @@
       }
     }
 
+    /* Right-aligned section variant */
+    .ai-section--right {
+      align-items: flex-end;
+    }
+
+    .ai-section--right .ai-section-label,
+    .ai-section--right .ai-section-heading {
+      text-align: right;
+    }
+
+    /* Personalisation section grid (reversed) */
+    .personalisation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 4rem;
+      width: 100%;
+    }
+
+    /* Decorative tag pills for left column */
+    .personalisation-tags {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .p-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(212, 175, 55, 0.06);
+      border: 1px solid rgba(212, 175, 55, 0.18);
+      border-radius: 50px;
+      padding: 0.9rem 1.5rem;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: 0.3px;
+      transition: var(--transition-smooth);
+    }
+
+    .p-tag:hover {
+      background: rgba(212, 175, 55, 0.1);
+      border-color: rgba(212, 175, 55, 0.35);
+      transform: translateX(-6px);
+    }
+
+    .p-tag-dot {
+      width: 8px;
+      height: 8px;
+      min-width: 8px;
+      border-radius: 50%;
+      background: var(--gold-base);
+      box-shadow: 0 0 8px var(--gold-glow);
+    }
+
+    @media (max-width: 1024px) {
+      .personalisation-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .ai-section--right {
+        align-items: flex-start;
+      }
+      .ai-section--right .ai-section-label,
+      .ai-section--right .ai-section-heading {
+        text-align: left;
+      }
+      .p-tag:hover {
+        transform: translateX(0);
+      }
+    }
+
     /* Override absolute footer for scrollable homepage */
     .site-footer {
       position: relative;
@@ -439,6 +512,49 @@
               summarise documents, or power intelligent chatbots for your customers.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="ai-divider"></div>
+
+  <!-- Why Personalisation Section -->
+  <section class="ai-section ai-section--right" aria-labelledby="personalisation-heading">
+    <p class="ai-section-label scroll-reveal">Our Approach</p>
+    <h2 class="ai-section-heading scroll-reveal" id="personalisation-heading" data-delay="100">
+      Why is personalisation<br>so <span>important?</span>
+    </h2>
+
+    <div class="personalisation-grid">
+      <!-- Left: decorative tag pills -->
+      <div class="personalisation-tags">
+        <div class="p-tag scroll-reveal" data-delay="150">
+          <span class="p-tag-dot"></span> Built around your business
+        </div>
+        <div class="p-tag scroll-reveal" data-delay="250">
+          <span class="p-tag-dot"></span> Your workflow, your way
+        </div>
+        <div class="p-tag scroll-reveal" data-delay="350">
+          <span class="p-tag-dot"></span> Features you actually want
+        </div>
+      </div>
+
+      <!-- Right: body text -->
+      <div class="ai-body-text scroll-reveal" data-delay="200">
+        <p>
+          We're sure you don't think your business is just like anyone else's — everyone's business has
+          their own personal touch. So why should the tools you use be any different?
+        </p>
+        <p>
+          The way you want to use tools isn't always the same as someone else. Our goal is to help
+          design tools you can use with ease, with <strong>features you actually want</strong> — not
+          a generic package built for the average customer that doesn't quite fit anyone perfectly.
+        </p>
+        <p>
+          When a tool feels like it was built specifically for you, your team adopts it faster,
+          uses it better, and gets more value from it. <strong>That's the MORO difference.</strong>
+        </p>
       </div>
     </div>
   </section>
