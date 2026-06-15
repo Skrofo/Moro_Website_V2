@@ -273,7 +273,7 @@
       </div>
 
       <div class="contact-form-container">
-        <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+        <form class="contact-form" id="contact-form" onsubmit="sendMessage(event);">
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" id="name" class="form-control" placeholder="Your name" required>
@@ -308,6 +308,14 @@
   </footer>
 
   <script>
+    function sendMessage(event) {
+      event.preventDefault();
+      alert('Message sent successfully!');
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('message').value = '';
+    }
+
     // Ambient mouse glow script
     document.addEventListener('mousemove', (e) => {
       const x = (e.clientX / window.innerWidth) * 100;
